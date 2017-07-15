@@ -1,0 +1,14 @@
+{
+  "name": "vuejs-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:shchekoldin/vuejs-tutorial.git",
+  "author": "Alexander Shchekoldin <vrungelru@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.4.1"
+  }
+  "devDependencies": {
+    "vue-cli": "^2.8.2"
+  }
+}
