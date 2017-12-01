@@ -18,7 +18,7 @@
     </ol>
     <button v-on:click="reverseMessage">Reverse Message</button>
     <form v-on:submit.prevent="onSubmit">
-      <input v-model="message">
+      <input ref="input" v-model="message">
       <button type="submit" v-bind:disabled="isButtonDisabled">Button</button>
     </form>
 
@@ -28,6 +28,12 @@
         <li class="divider"></li>
       </template>
     </ul>
+
+    <table border="1">
+      <tr is="table-row"></tr>
+      <tr is="table-row"></tr>
+      <tr is="table-row"></tr>
+    </table>
   </div>
 </template>
 
@@ -75,6 +81,7 @@
       reverseMessage () {
         this.message = this.message.split('').reverse().join('')
         this.$set(this, 'ok', true)
+        console.log(this.$refs)
       },
       onSubmit () {
         this.isButtonDisabled = true
