@@ -17,6 +17,23 @@
     <keep-alive>
       <component v-bind:is="'table-row'"></component>
     </keep-alive>
+
+    <transition>
+      <table v-if="items.length > 0">
+        <tr>
+          <td>items {{ items.length }}</td>
+        </tr>
+      </table>
+      <p v-else>Sorry, no items found.</p>
+    </transition>
+
+    <transition-group name="list" tag="p">
+      <span v-for="item in items" v-bind:key="item" class="list-item">
+        {{ item }}
+      </span>
+    </transition-group>
+
+    <button v-on:click="addItem">Add Item</button>
   </app-layout>
 </template>
 
@@ -57,8 +74,30 @@
   export default {
     data () {
       return {
+        items: [],
         props: {}
+      }
+    },
+    methods: {
+      addItem () {
+        console.log('add item')
+
+        this.items.push('item' + Math.random())
       }
     }
   }
 </script>
+
+<style>
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+</style>
